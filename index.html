@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Génie en Guerre</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- En-tête principal du jeu -->
+  <header class="hero">
+    <img src="images/logo.png" alt="Logo Génie en Guerre" class="logo">
+    <div>
+      <h1>Génie en Guerre</h1>
+      <p class="slogan">Réponds correctement. Lance ta frappe. Coule la flotte ennemie.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Formulaire de départ : utilise les concepts de formulaires HTML + Javascript -->
+    <section class="carte" id="sectionDepart">
+      <h2>Configuration de la partie</h2>
+      <form id="formDepart">
+        <label for="txtNom">Nom du joueur :</label>
+        <input type="text" id="txtNom" placeholder="Ex. Gevorg">
+
+        <label for="selDifficulte">Difficulté :</label>
+        <select id="selDifficulte">
+          <option value="facile">Facile</option>
+          <option value="normal" selected>Normal</option>
+          <option value="difficile">Difficile</option>
+        </select>
+
+        <p class="petitTitre">Matières de questions :</p>
+        <label class="case"><input type="checkbox" name="matiere" value="sciences" checked> Sciences</label>
+        <label class="case"><input type="checkbox" name="matiere" value="histoire" checked> Histoire</label>
+        <label class="case"><input type="checkbox" name="matiere" value="geo" checked> Géographie</label>
+        <label class="case"><input type="checkbox" name="matiere" value="general" checked> Culture générale</label>
+
+        <input type="button" id="btnCommencer" value="Commencer la bataille" onclick="commencerJeu()">
+      </form>
+      <div id="divErreur"></div>
+    </section>
+
+    <!-- Zone principale du jeu -->
+    <section class="grilleJeu cache" id="sectionJeu">
+      <section class="carte panneau">
+        <h2>Tableau de bord</h2>
+        <p id="txtJoueur"></p>
+        <p id="txtScore"></p>
+        <p id="txtTentatives"></p>
+        <p id="txtEtat"></p>
+        <input type="button" value="Nouvelle partie" onclick="recommencerJeu()">
+      </section>
+
+      <section class="carte panneauPrincipal">
+        <h2>Carte navale ennemie</h2>
+        <p>Choisis une case. Pour lancer une frappe, tu dois répondre à une question trivia.</p>
+        <div id="divGrille" class="plateau"></div>
+      </section>
+    </section>
+
+    <!-- Question trivia affichée après le choix d'une case -->
+    <section class="carte cache" id="sectionQuestion">
+      <h2>Question de lancement</h2>
+      <p id="txtCoordonnee"></p>
+      <p id="txtQuestion"></p>
+      <div id="divChoix"></div>
+    </section>
+
+    <!-- Journal des actions -->
+    <section class="carte cache" id="sectionJournal">
+      <h2>Journal de bataille</h2>
+      <div id="divJournal"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projet final ICS3U — Amazir, Paul, Gevorg</p>
+  </footer>
+
+  <script src="scripts/script.js"></script>
+</body>
+</html>
